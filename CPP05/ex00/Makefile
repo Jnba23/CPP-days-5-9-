@@ -1,19 +1,19 @@
 CC = c++
-FLAGS = -Wall -Werror -Wextra -std=c++98
+FLAGS = -Wall -Werror -Wextra -I. -std=c++98
 
-MAN = 
+MAN = Bureaucrat.cpp main.cpp
 OBJS = $(MAN:.cpp=.o)
-HEADER = 
+HEADER = Bureaucrat.hpp
 
 EXEC = Bureaucrat
 
 all : $(EXEC)
 
 $(EXEC) : $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(FLAGS) $^ -o $@
 
 %.o : %.cpp $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean :
 	rm -rf $(OBJS)
