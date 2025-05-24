@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:19:06 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/21 12:20:24 by asayad           ###   ########.fr       */
+/*   Updated: 2025/05/24 09:08:51 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ Bureaucrat::~Bureaucrat(){
     std::cout << "Bureaucrat destructor called !" << '\n';
 }
 
-const char* Bureaucrat::GradeTooHigh::what(){
+const char* Bureaucrat::GradeTooHigh::what() const throw(){
     return ("Grade too high !");
 };
 
-const char* Bureaucrat::GradeTooLow::what(){
+const char* Bureaucrat::GradeTooLow::what() const throw(){
     return ("Grade too low !");
 };

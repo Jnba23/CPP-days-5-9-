@@ -1,12 +1,12 @@
-/* ************************************************************************** */
+>/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:19:24 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/21 11:46:25 by asayad           ###   ########.fr       */
+/*   Updated: 2025/05/24 09:08:18 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ class Bureaucrat{
         void decrementGrd();
         
         // exept
-        class GradeTooHigh : public std::exception{
-            public:
-            const char* what();
-        };
-        class GradeTooLow : public std::exception{
-            public:
-            const char* what();
-        };
     };
+class GradeTooHigh : public std::exception{
+    public:
+    const char* what() const throw();
+};
+class GradeTooLow : public std::exception{
+    public:
+    const char* what() const throw();
+};
     std::ostream& operator<<(std::ostream& out, const Bureaucrat& c);
 
 #endif

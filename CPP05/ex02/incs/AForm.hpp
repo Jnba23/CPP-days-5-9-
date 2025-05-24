@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 12:23:09 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/24 14:03:35 by asayad           ###   ########.fr       */
+/*   Created: 2025/05/24 18:37:51 by asayad            #+#    #+#             */
+/*   Updated: 2025/05/24 19:03:10 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
-#include <bureaucrat.hpp>
-class GradeTooHigh;
-class GradeTppLow;
+#include <string>
+#include <iostream>
+#include <Bureaucrat.hpp>
 
 class Bureaucrat;
-class Form{
+class AForm{
     private:
         const std::string name;
         bool formSigned;
         const int signature_grade;
         const int exec_grade;
     public:
-        Form(std::string name, int sign_grd, int exec_grd);
-        Form(const Form& f);
-        Form& operator=(const Form& f);
-        ~Form();
-        const std::string& getFormName() const;
-        int getSignGrd() const;
-        int getExecGrd() const;
-        bool fsigned() const;
-        bool beSigned(const Bureaucrat& b);
+        public:
+        AForm(std::string name, int sign_grd, int exec_grd);
+        AForm(const AForm& f);
+        AForm& operator=(const AForm& f);
+        virtual ~AForm();
+        virtual const std::string& getAFormName() const = 0;
+        virtual int getSignGrd() const = 0;
+        virtual int getExecGrd() const = 0;
+        virtual bool fsigned() const = 0;
+        virtual bool beSigned(const Bureaucrat& b) = 0;
         class GradeTooLowException : public std::exception{
             public:
                 const char* what() const throw();
         };
 };
-std::ostream& operator<<(std::ostream& out, const Form& c);
 
 #endif
