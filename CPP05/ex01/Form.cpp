@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 12:22:17 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/24 14:03:50 by asayad           ###   ########.fr       */
+/*   Updated: 2025/05/30 08:04:58 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,6 @@ int Form::getSignGrd() const{
 
 int Form::getExecGrd() const{
     return (exec_grade);
-}
-
-bool Form::fsigned() const{
-    return (formSigned);
 }
 
 bool Form::beSigned(const Bureaucrat& b){

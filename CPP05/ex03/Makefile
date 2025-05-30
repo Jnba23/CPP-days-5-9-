@@ -1,8 +1,8 @@
 CC = c++
 FLAGS = -Wall -Werror -Wextra -Iincs -std=c++98 -MMD
-SRC = Bureaucrat.cpp main.cpp AForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp \
+SRC = Bureaucrat.cpp main.cpp AForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp Intern.cpp \
 	RobotomyRequestForm.cpp
-HEADER = AForm.hpp bureaucrat.hpp ShrubberyCreationForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp
+HEADER = AForm.hpp bureaucrat.hpp ShrubberyCreationForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp Intern.hpp
 OBJDIR = obj
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:%.cpp=%.o))
 DEPSDIR = deps

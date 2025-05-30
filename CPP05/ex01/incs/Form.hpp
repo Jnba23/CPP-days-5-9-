@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 12:23:09 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/24 14:03:35 by asayad           ###   ########.fr       */
+/*   Updated: 2025/05/30 08:05:10 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ class Form{
         const std::string& getFormName() const;
         int getSignGrd() const;
         int getExecGrd() const;
-        bool fsigned() const;
         bool beSigned(const Bureaucrat& b);
         class GradeTooLowException : public std::exception{
             public:

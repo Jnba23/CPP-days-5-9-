@@ -1,27 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 08:46:27 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/30 16:31:52 by asayad           ###   ########.fr       */
+/*   Created: 2025/05/30 19:02:39 by asayad            #+#    #+#             */
+/*   Updated: 2025/05/30 19:08:21 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMY_REQUEST_FORM_HPP
-#define ROBOTOMY_REQUEST_FORM_HPP
+#include <Intern.hpp>
 
-#include <AForm.hpp>
-
-class RobotomyRequestForm : public AForm{
-    public:
-        RobotomyRequestForm(const std::string& name);
-        RobotomyRequestForm(const RobotomyRequestForm& r);
-        RobotomyRequestForm& operator=(const RobotomyRequestForm& r);
-        ~RobotomyRequestForm();
-        void executef() const;
-};
-
-#endif
+Intern::Intern(){
+    std::cout << "Intern"
+}

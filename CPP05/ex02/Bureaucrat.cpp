@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:19:06 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/24 12:20:08 by asayad           ###   ########.fr       */
+/*   Updated: 2025/05/30 16:19:43 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <bureaucrat.hpp>
+#include <Bureaucrat.hpp>
 
 Bureaucrat::Bureaucrat(std::string name, int gd): name(name), grade(gd){
     if (grade < 1)
@@ -57,13 +57,18 @@ void Bureaucrat::decrementGrd(){
     grade += 1;
 }
 
-Bureaucrat::~Bureaucrat(){
-    std::cout << "Bureaucrat destructor called !" << '\n';
-}
-
-void Bureaucrat::signForm(Form& f){
+void Bureaucrat::signForm(AForm& f){
     if (f.beSigned(*this))
         std::cout << getName() << " signed " << f.getFormName() << '\n';
+}
+
+void Bureaucrat::executeForm(AForm const& form){
+    form.execute(*this);
+    std::cout << getName() << " executed " << form.getFormName() << '\n';
+}
+
+Bureaucrat::~Bureaucrat(){
+    std::cout << "Bureaucrat destructor called !" << '\n';
 }
 
 const char* GradeTooHigh::what() const throw(){

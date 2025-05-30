@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:19:24 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/24 11:56:47 by asayad           ###   ########.fr       */
+/*   Updated: 2025/05/30 16:35:15 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #define BUREAUCRAT_HPP
 #include <exception>
 #include <iostream>
-#include <Form.hpp>
+#include <AForm.hpp>
 
-class Form;
+class AForm;
 class Bureaucrat{
     private:
         const std::string name;
@@ -31,7 +31,8 @@ class Bureaucrat{
         int getGrade() const;
         void incrementGrd();
         void decrementGrd();
-        void signForm(Form& f);
+        void signForm(AForm& f);
+        void executeForm(AForm const & form);
     };
 class GradeTooHigh : public std::exception{
     public:
