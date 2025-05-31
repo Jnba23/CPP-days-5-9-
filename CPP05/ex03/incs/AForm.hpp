@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 18:37:51 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/30 18:07:28 by asayad           ###   ########.fr       */
+/*   Updated: 2025/05/31 13:38:32 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 #include <iostream>
 #include <Bureaucrat.hpp>
 #include <fstream>
+
+typedef enum FORMTYPE {
+    PRESIDENTIALPARDONFORM,
+    ROBOTOMYREQUESTFORM,
+    SHRUBBERYCREATIONFORM,
+};
 
 class Bureaucrat;
 class AForm{
