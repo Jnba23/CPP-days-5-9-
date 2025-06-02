@@ -1,5 +1,5 @@
 CC = c++
-FLAGS = -Wall -Werror -Wextra -Iincs -std=c++98 -MMD -g3
+FLAGS = -Wall -Werror -Wextra -Iincs -std=c++98 -MMD
 SRC = Bureaucrat.cpp main.cpp AForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp Intern.cpp \
 	RobotomyRequestForm.cpp
 HEADER = AForm.hpp bureaucrat.hpp ShrubberyCreationForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp Intern.hpp
@@ -7,7 +7,7 @@ OBJDIR = obj
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:%.cpp=%.o))
 DEPSDIR = deps
 DEPS = $(addprefix $(DEPSDIR)/, $(SRC:%.cpp=%.d))
-EXEC = AForm
+EXEC = Intern
 
 all: $(EXEC)
 	@if [ -f $(EXEC) ]; then ./$(EXEC); else echo "Error $(EXEC) not found"; exit 1; fi

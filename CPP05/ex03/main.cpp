@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 18:35:45 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/02 19:46:37 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/02 21:23:07 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,12 @@
 #include <Intern.hpp>
 
 int main(){
-    AForm* f1;
-    AForm* f2;
-    AForm* f3;
-
     try{
-        Bureaucrat b("Bob", 5);
+        Bureaucrat b("Bob", 140);
         Intern i1;
-        f1 = i1.makeForm("Presidential Pardon", "Russia");
-        f2 = i1.makeForm("Shrubbery creation", "Field");
-        f3 = i1.makeForm("Robotomy Request", "Brother");
+        AForm* f1 = i1.makeForm("Presidential Pardon", "Russia");
+        AForm* f2 = i1.makeForm("Shrubbery creation", "Field");
+        AForm* f3 = i1.makeForm("Robotomy Request", "Brother");
         try{
             b.signForm(*f1);
         }catch (const std::exception& c){
@@ -63,10 +59,10 @@ int main(){
         }catch (const std::exception& c){
             std::cout << c.what() << '\n';
         }
+        delete f1;
+        delete f2;
+        delete f3;
     } catch(std::exception& c) {
         std::cout << c.what() << '\n';
     }
-    delete f1;
-    delete f2;
-    delete f3;
 }
