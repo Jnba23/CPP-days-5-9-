@@ -1,4 +1,4 @@
->/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:19:24 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/24 09:08:18 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/01 22:49:01 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ class Bureaucrat{
         const std::string name;
         int grade;
     public:
-    // form 
+    // form
+        Bureaucrat();
         Bureaucrat(std::string name, int grade);
         Bureaucrat(const Bureaucrat& b);
         Bureaucrat& operator=(const Bureaucrat& b);
@@ -33,15 +34,16 @@ class Bureaucrat{
         void decrementGrd();
         
         // exept
-    };
-class GradeTooHigh : public std::exception{
-    public:
-    const char* what() const throw();
+        class GradeTooHighException : public std::exception{
+            public:
+                const char* what() const throw();
+        };
+        class GradeTooLowException : public std::exception{
+            public:
+                const char* what() const throw();
+        };
 };
-class GradeTooLow : public std::exception{
-    public:
-    const char* what() const throw();
-};
-    std::ostream& operator<<(std::ostream& out, const Bureaucrat& c);
+
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& c);
 
 #endif

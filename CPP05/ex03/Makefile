@@ -1,5 +1,5 @@
 CC = c++
-FLAGS = -Wall -Werror -Wextra -Iincs -std=c++98 -MMD
+FLAGS = -Wall -Werror -Wextra -Iincs -std=c++98 -MMD -g3
 SRC = Bureaucrat.cpp main.cpp AForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp Intern.cpp \
 	RobotomyRequestForm.cpp
 HEADER = AForm.hpp bureaucrat.hpp ShrubberyCreationForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp Intern.hpp
@@ -22,10 +22,11 @@ $(OBJDIR)/%.o: %.cpp
 # 	$(CC) $(FLAGS) -c $< -o $@
 # 	@mv $(OBJDIR)/$(<:.cpp=.d) $(DEPSDIR)/
 clean:
-	rm -rf $(OBJDIR) $(DEPSDIR)
+	@rm -rf $(OBJDIR) $(DEPSDIR) \
+	$$(ls | grep _shrubbery)
 
 fclean: clean
-	rm -rf $(EXEC)
+	@rm -rf $(EXEC)
 
 re: fclean all
 

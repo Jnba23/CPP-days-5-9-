@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 08:46:27 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/30 16:31:52 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/02 16:52:57 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 #include <AForm.hpp>
 
 class RobotomyRequestForm : public AForm{
+    private:
+        std::string target;
     public:
-        RobotomyRequestForm(const std::string& name);
+        RobotomyRequestForm();
+        RobotomyRequestForm(const std::string& target);
         RobotomyRequestForm(const RobotomyRequestForm& r);
         RobotomyRequestForm& operator=(const RobotomyRequestForm& r);
+        const std::string& getTarget() const;
         ~RobotomyRequestForm();
         void executef() const;
 };

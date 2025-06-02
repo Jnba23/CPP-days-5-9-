@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 18:37:51 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/31 13:38:32 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/02 19:43:17 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 #include <Bureaucrat.hpp>
 #include <fstream>
 
-typedef enum FORMTYPE {
-    PRESIDENTIALPARDONFORM,
-    ROBOTOMYREQUESTFORM,
-    SHRUBBERYCREATIONFORM,
-};
+class AForm;
+typedef struct formType {
+    AForm* (*formFunc)(const std::string& target);
+    std::string name;
+} Form;
 
 class Bureaucrat;
 class AForm{
@@ -32,17 +32,15 @@ class AForm{
         const int signature_grade;
         const int exec_grade;
     public:
-        static int i;
         AForm(std::string name, int sign_grd, int exec_grd);
         AForm(const AForm& f);
-        AForm& operator=(const AForm& f);
         virtual ~AForm();
         const std::string& getFormName() const;
         int getSignGrd() const;
         int getExecGrd() const;
         bool fsigned() const;
         void setFsigned(bool a);
-        bool beSigned(const Bureaucrat& b);
+        void beSigned(const Bureaucrat& b);
         void execute(Bureaucrat const& executor) const;
         virtual void executef() const = 0;
         class GradeTooLowException : public std::exception{
@@ -50,6 +48,10 @@ class AForm{
                 const char* what() const throw();
         };
         class FormSignedException : public std::exception{
+            public:
+                const char* what() const throw();
+        };
+        class FormUnsignedException : public std::exception{
             public:
                 const char* what() const throw();
         };

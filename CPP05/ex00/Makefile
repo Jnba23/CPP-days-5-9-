@@ -10,7 +10,7 @@ EXEC = Bureaucrat
 all : $(EXEC)
 
 $(EXEC) : $(OBJS)
-	$(CC) $(FLAGS) $^ -o $@
+	$(CC) $^ -o $@
 
 %.o : %.cpp $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 12:23:09 by asayad            #+#    #+#             */
-/*   Updated: 2025/05/30 08:05:10 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/01 23:06:40 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Form{
         const int signature_grade;
         const int exec_grade;
     public:
+        Form();
         Form(std::string name, int sign_grd, int exec_grd);
         Form(const Form& f);
         Form& operator=(const Form& f);
@@ -32,8 +33,17 @@ class Form{
         const std::string& getFormName() const;
         int getSignGrd() const;
         int getExecGrd() const;
-        bool beSigned(const Bureaucrat& b);
+        bool fsigned() const;
+        void beSigned(const Bureaucrat& b);
         class GradeTooLowException : public std::exception{
+            public:
+                const char* what() const throw();
+        };
+        class GradeTooHighException : public std::exception{
+            public:
+                const char* what() const throw();
+        };
+        class FormSigned : public std::exception {
             public:
                 const char* what() const throw();
         };
