@@ -1,7 +1,7 @@
 CC = c++
 FLAGS = -Wall -Werror -Wextra -Iincs -std=c++98 -MMD -g3
 SRC = ScalarConverter.cpp main.cpp
-HEADER = AForm.hpp bureaucrat.hpp ShrubberyCreationForm.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp
+HEADER = ScalarConverter.hpp
 OBJDIR = obj
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:%.cpp=%.o))
 DEPSDIR = deps

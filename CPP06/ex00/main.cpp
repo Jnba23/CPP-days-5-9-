@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 11:48:03 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/17 13:41:18 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/18 12:53:30 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int ac, char **av){
           try {
             ScalarConverter::convert(m);
           } catch (const std::exception& c){
-            
+              std::cout << c.what() << '\n';
           } 
         } else {
             std::cout << "invalid input !" << '\n';

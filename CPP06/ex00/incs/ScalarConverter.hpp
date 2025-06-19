@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:04:01 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/17 17:20:00 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/18 19:34:23 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
 #include <cctype>
 #include <iomanip>
+#include <climits>
+#include <limits>
+#include <errno.h>
 
 class ScalarConverter {
     private:
@@ -29,8 +33,9 @@ class ScalarConverter {
     };
     int pseudoLiteral(const std::string& s);
     void isChar(char c);
-    void sToint(const std::string& s);
-    void sTofloat(const std::string& s);
-    void sTodouble(const std::string& s);
+    void isNum(const std::string& s);
+    void isInt(const std::string& s);
+    void isFloat(const std::string& s);
+    void isDouble(const std::string& s);
 
 #endif
