@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:18:45 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/20 18:14:33 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/20 18:25:56 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void ScalarConverter::convert(const std::string &s){
     if (pseudoLiteral(s))
         return ;
     //char, int, flaot, double
-    if (std::isprint(s[0]) && s.size() == 1){
+    if (std::isalpha(s[0]) && s.size() == 1){
         isChar(s[0]);
     }
     else if (std::isdigit(s[0]) || s[0] == '+' || s[0] == '-' || s[0] == '.'){
