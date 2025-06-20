@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:18:45 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/20 18:09:04 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/20 18:14:33 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void ScalarConverter::convert(const std::string &s){
 }
 
 void isChar(char c){
-    std::cout << "char : " << c << '\n';
+    std::cout << "char : '" << c << "'" << '\n';
     int i = c;
     float f = c;
     double d = c;
@@ -123,7 +123,6 @@ void isFloat(const std::string& v){
 
 void isDouble(const std::string& s){
     double d = strtod(s.c_str(), NULL);
-    std::cout << "here" << '\n';
     if (errno == ERANGE){
         std::cout << "char: impossible" << '\n';
         std::cout << "int: impossible" << '\n';
