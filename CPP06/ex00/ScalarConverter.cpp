@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:18:45 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/20 17:44:33 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/20 18:00:41 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void isNum(const std::string& s){
 
 void isInt(const std::string& v){
     long long i = strtoll(v.c_str(), NULL, 10);
+    std::cout << "i = : " << i << '\n';
     if (i > INT_MAX || i < INT_MIN){
             std::cout << "char: impossible" << '\n';
             std::cout << "int: impossible" << '\n';
@@ -143,7 +144,7 @@ void isDouble(const std::string& s){
     if (d > std::numeric_limits<float>::max() || d < -std::numeric_limits<float>::max())
         std::cout << "float : impossible" << '\n';
     else
-        std::cout << "float : " << static_cast<float>(d) << "f\n";
+        std::cout << "float : " << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f\n";
     std::cout << "double : " << std::fixed << std::setprecision(1) << d << '\n';
 }
 
