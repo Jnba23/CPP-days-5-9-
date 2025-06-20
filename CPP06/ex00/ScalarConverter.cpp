@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:18:45 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/20 18:00:41 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/20 18:09:04 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void ScalarConverter::convert(const std::string &s){
     if (std::isprint(s[0]) && s.size() == 1){
         isChar(s[0]);
     }
-    if (std::isdigit(s[0]) || s[0] == '+' || s[0] == '-' || s[0] == '.'){
+    else if (std::isdigit(s[0]) || s[0] == '+' || s[0] == '-' || s[0] == '.'){
         isNum(s);
     }
 }
@@ -74,7 +74,6 @@ void isNum(const std::string& s){
 
 void isInt(const std::string& v){
     long long i = strtoll(v.c_str(), NULL, 10);
-    std::cout << "i = : " << i << '\n';
     if (i > INT_MAX || i < INT_MIN){
             std::cout << "char: impossible" << '\n';
             std::cout << "int: impossible" << '\n';
@@ -124,6 +123,7 @@ void isFloat(const std::string& v){
 
 void isDouble(const std::string& s){
     double d = strtod(s.c_str(), NULL);
+    std::cout << "here" << '\n';
     if (errno == ERANGE){
         std::cout << "char: impossible" << '\n';
         std::cout << "int: impossible" << '\n';
