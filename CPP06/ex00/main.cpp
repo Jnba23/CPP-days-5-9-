@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 11:48:03 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/18 12:53:30 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/20 17:17:41 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int ac, char **av){
     if (ac == 2){
         std::string m;
         std::istringstream s(av[1]);
-        if (s >> m && (s >> std::ws, s.eof())){
+        if (s >> m && (s.eof())){
           try {
             ScalarConverter::convert(m);
           } catch (const std::exception& c){

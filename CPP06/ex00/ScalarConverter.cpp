@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:18:45 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/18 20:00:49 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/20 17:44:33 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void ScalarConverter::convert(const std::string &s){
     if (pseudoLiteral(s))
         return ;
     //char, int, flaot, double
-    if (std::isalpha(s[0]) && s.size() == 1){
+    if (std::isprint(s[0]) && s.size() == 1){
         isChar(s[0]);
     }
-    if (std::isdigit(s[0]) || s[0] == '+' || s[0] == '-'){
+    if (std::isdigit(s[0]) || s[0] == '+' || s[0] == '-' || s[0] == '.'){
         isNum(s);
     }
 }
@@ -143,7 +143,7 @@ void isDouble(const std::string& s){
     if (d > std::numeric_limits<float>::max() || d < -std::numeric_limits<float>::max())
         std::cout << "float : impossible" << '\n';
     else
-        std::cout << "float : " << static_cast<float>(d) << "\n";
+        std::cout << "float : " << static_cast<float>(d) << "f\n";
     std::cout << "double : " << std::fixed << std::setprecision(1) << d << '\n';
 }
 
@@ -153,27 +153,27 @@ int pseudoLiteral(const std::string& s){
         if (s == p[i]){
             std::cout << "char : impossible" << '\n';
             std::cout << "int : impossible" << '\n';
-            if (s.compare("+inf")){
+            if (!s.compare("+inf")){
                 std::cout << "float: inff" << '\n';
                 std::cout << "double: inf" << '\n';
             }
-            if (s.compare("-inf")){
+            if (!s.compare("-inf")){
                 std::cout << "float: -inff" << '\n';
                 std::cout << "double: -inf" << '\n';
             }
-            if (s.compare("-inff")){
+            if (!s.compare("-inff")){
                 std::cout << "float: -inff" << '\n';
                 std::cout << "double: -inf" << '\n';
             }
-            if (s.compare("+inff")){
+            if (!s.compare("+inff")){
                 std::cout << "float: +inff" << '\n';
                 std::cout << "double: +inf" << '\n';
             }
-            if (s.compare("nan")){
+            if (!s.compare("nan")){
                 std::cout << "float: nanf" << '\n';
                 std::cout << "double: nan" << '\n';
             }
-            if (s.compare("nanf")){
+            if (!s.compare("nanf")){
                 std::cout << "float: nanf" << '\n';
                 std::cout << "double: nan" << '\n';
             }
