@@ -5,23 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 10:30:12 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/20 18:56:41 by asayad           ###   ########.fr       */
+/*   Created: 2025/06/24 12:25:23 by asayad            #+#    #+#             */
+/*   Updated: 2025/06/24 12:34:37 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Base.hpp>
-#include <classA.hpp>
-#include <classB.hpp>
-#include <classC.hpp>
+#include<header.hpp>
 
 int main(){
-    srand(time(NULL));
-    Base* a = generate();
-    Base* x = generate();
-    Base& b = *x;
-    identify(a);
-    identify(b);
-    delete a;
-    delete x;
+    int a = 6;
+    int b = 9;
+    double c = 2.56;
+    double d = 3.5;
+    std::cout << "min a & b : " << min(a, b) << '\n';
+    std::cout << "max a & b : " << max(a, b) << '\n';
+    swap(a, b);
+    std::cout << "a : " << a << " b : " << b << '\n';
+    std::cout << "min c & d : " << min(c, d) << '\n';
+    std::cout << "max c & d : " << max(c, d) << '\n';
+    swap(c, d);
+    std::cout << "a : " << c << " b : " << d << '\n';
 }

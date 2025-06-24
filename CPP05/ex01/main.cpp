@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 10:43:39 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/02 17:37:36 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/02 21:00:09 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(){
     try{
         Bureaucrat c("Pepe", 1);
-        Bureaucrat p("Meme", 10);
+        Bureaucrat p("Meme", 11);
         Form d("Certif", 10, 130);
         Form m("Attestation", 8, 3);
         std::cout << c;

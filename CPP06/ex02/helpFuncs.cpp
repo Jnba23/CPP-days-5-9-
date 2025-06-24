@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:23 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/20 11:31:01 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/20 18:47:58 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,19 @@ void identify(Base* x){
 
 void identify(Base& x){
     try{
-        A a = dynamic_cast<A&>(x);
+        A& a = dynamic_cast<A&>(x);
         std::cout << a.getType() << '\n';
         return ;
-    } catch (const std::exception& e){
-        std::cout << e.what() << " A failed :" << '\n';
-    }
+    } catch (const std::exception& e){}
     try {
-        B b = dynamic_cast<B&>(x);
+        B& b = dynamic_cast<B&>(x);
         std::cout << b.getType() << '\n';
         return ;
-    } catch (const std::exception& e){
-        std::cout << e.what() << " B failed :" << '\n';
-    }
+    } catch (const std::exception& e){}
     try {
-        C c = dynamic_cast<C&>(x);
+        C& c = dynamic_cast<C&>(x);
         std::cout << c.getType() << '\n';
         return ;
-    } catch (const std::exception& e){
-        std::cout << e.what() << " C failed :" << '\n';
-    }
+    } catch (const std::exception& e){}
+    std::cout << "Bad cast !" << '\n';
 }

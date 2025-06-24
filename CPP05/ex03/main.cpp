@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 18:35:45 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/02 21:23:07 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/02 21:35:55 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int main(){
     try{
-        Bureaucrat b("Bob", 140);
+        Bureaucrat b("Bob", 10);
         Intern i1;
         AForm* f1 = i1.makeForm("Presidential Pardon", "Russia");
         AForm* f2 = i1.makeForm("Shrubbery creation", "Field");

@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 08:48:21 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/02 19:43:03 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/02 22:01:49 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ RobotomyRequestForm::~RobotomyRequestForm(){
 }
 
 void RobotomyRequestForm::executef() const{
-    static unsigned int i(time(0) %  0x7fffffff);
+    static unsigned int i(time(0));
     std::cout << "Drilling noises *!*!*!..." << '\n';
     if (i % 2 != 0)
         std::cout << getTarget() << " has been robotomized !" << '\n';

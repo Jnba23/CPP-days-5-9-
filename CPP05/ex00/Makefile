@@ -1,24 +1,31 @@
 CC = c++
-FLAGS = -Wall -Werror -Wextra -I. -std=c++98
-
-MAN = Bureaucrat.cpp main.cpp
-OBJS = $(MAN:.cpp=.o)
+FLAGS = -Wall -Werror -Wextra -Iincs -std=c++98 -MMD
+SRC = Bureaucrat.cpp main.cpp
 HEADER = Bureaucrat.hpp
-
+OBJDIR = obj
+OBJ = $(addprefix $(OBJDIR)/, $(SRC:%.cpp=%.o))
+DEPSDIR = deps
+DEPS = $(addprefix $(DEPSDIR)/, $(SRC:%.cpp=%.d))
 EXEC = Bureaucrat
 
-all : $(EXEC)
+all: $(EXEC)
+	@if [ -f $(EXEC) ]; then ./$(EXEC); else echo "Error $(EXEC) not found"; exit 1; fi
+$(EXEC): $(OBJ)
+	$(CC) -o $@ $^
 
-$(EXEC) : $(OBJS)
-	$(CC) $^ -o $@
+$(OBJDIR)/%.o: %.cpp
+	mkdir -p $(OBJDIR) $(DEPSDIR)
+	$(CC) $(FLAGS) -c $< -o $@ -MF $(DEPSDIR)/$(<:%.cpp=%.d)
+# $(OBJDIR)/%.o: %.cpp
+# 	@mkdir -p $(OBJDIR) $(DEPSDIR)
+# 	$(CC) $(FLAGS) -c $< -o $@
+# 	@mv $(OBJDIR)/$(<:.cpp=.d) $(DEPSDIR)/
+clean:
+	rm -rf $(OBJDIR) $(DEPSDIR)
 
-%.o : %.cpp $(HEADER)
-	$(CC) $(FLAGS) -c $< -o $@
-
-clean :
-	rm -rf $(OBJS)
-
-fclean : clean
+fclean: clean
 	rm -rf $(EXEC)
 
-re : fclean all
+re: fclean all
+
+-include $(DEPS)
