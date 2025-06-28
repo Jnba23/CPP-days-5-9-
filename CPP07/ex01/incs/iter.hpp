@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 12:45:04 by asayad            #+#    #+#             */
-/*   Updated: 2025/06/24 14:11:38 by asayad           ###   ########.fr       */
+/*   Updated: 2025/06/25 22:00:44 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ void iter(T* a, size_t b, Func f){
 }
 template <typename T>
 void f(T& a){
-    a += 3;
-}
-template <typename T>
-void f(const T& a){
     std::cout << a << '\n';
 }
 
