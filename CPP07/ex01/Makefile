@@ -22,7 +22,6 @@ $(OBJDIR)/%.o: %.cpp
 # 	@mv $(OBJDIR)/$(<:.cpp=.d) $(DEPSDIR)/
 clean:
 	@rm -rf $(OBJDIR) $(DEPSDIR) \
-	$$(ls | grep _shrubbery)
 
 fclean: clean
 	@rm -rf $(EXEC)
