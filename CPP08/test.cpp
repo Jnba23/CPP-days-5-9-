@@ -7,37 +7,39 @@
     // -Algorithms : (Applied within containers)
         // - sort, find, copy, for_each
     // -Iterators :
-    // -Functors(function objects) :used with algorithms to customize their behavior 
+    // -Functors(function objects) :used with algorithms to customize their behavior
+    // Array : contiguous memory storage => fast access
 
 #include <algorithm>
 #include <vector>
+#include <cassert>
 #include <iostream>
-#include <thread>
+#include <csignal>
 
-class User{
-    private:
-    public:
-        bool completed;
-        std::thread t;
-        User():completed(false){};
-        void setTaskAsComp(){
-            completed = true;
-        }
-        void routine(){
-            for (int i = 0; i < 10; i++){
-            }
-            setTaskAsComp();
-        }
-};
+// int devide(int i, int b){
+//     assert(b != 0 && "division by 0");
+//     return (i / b);
+// }
 
-
+// void printEl3(const std::vector<int>& a){
+//     assert(a.size() >= 3 && "vector too small !");
+//     std::cout << a[3] << '\n';
+// }
 int main(){
-    std::vector<User> users(5);
-    std::vector<bool> a(5, false);
-    for (int i = 0; i < 5; i++){
-        users.at(i).completed = a.at(i);
+    // int arr[10] = {1, 5, 7, 12, 21, 8, 6};
+    // std::vector<int> a(arr, arr + 10);
+    // for (const auto& i : a){
+    //     std::cout << i << '\n';
+    // }
+    int arr[] = {'e', 'b', 't', 'd'};
+    std::vector<int>c(arr, arr + 4);
+    for (int i = 0; i < 4; i++){
+        std::cout << c[i] << '\n';
     }
-    for (int i = 0; i < 5; i++){
-        users.at(i).t = std::thread(users.at(i).routine);
+    std::vector<int>::iterator b = c.begin();
+    std::vector<int>::iterator e = c.end();
+    std::sort(b, e);
+    for (b; b != c.end(); b++){
+        std::cout << *b << '\n';
     }
 }
