@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:23:37 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/02 13:11:37 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/07 18:31:03 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(){
     l.push_back(52);
     l.push_back(-33);
     try{
-        easyfind(l, 52);
+        easyfind(l, 5);
     } catch (const std::exception& c){
         std::cout << c.what() << '\n';
     }

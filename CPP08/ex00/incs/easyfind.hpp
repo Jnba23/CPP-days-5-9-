@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 11:26:30 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/02 11:54:46 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/07 18:30:39 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <vector>
 #include <list>
 #include <deque>
+#include <algorithm>
 #include <exception>
 
 class NotFound : public std::exception{
@@ -26,11 +27,9 @@ class NotFound : public std::exception{
 
 template <typename T>
 void easyfind(const T& c, int s){
-    for (typename T::const_iterator a = c.begin(); a != c.end(); a++){
-        if (*a == s){
-            std::cout << "Element " << s << " found in the container !" << '\n';
-            return ;
-        }
+    if (std::find(c.begin(), c.end(), s) != c.end()){
+        std::cout << "Element " << s << " found in the container !" << '\n';
+        return ;
     }
     throw(NotFound());
 }

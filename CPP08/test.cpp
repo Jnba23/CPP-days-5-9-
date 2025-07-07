@@ -1,20 +1,25 @@
 //STL : standard template library
 //organized into four main components :
     // -Containers : 
-        // - sequence containers : vectors, list, deque
-        // - associative containers : set, map, multiset, multimap
+        // - sequence containers : vectors, list, deque -> store them in the same order they were inserted
+        // - associative containers : set, map, multiset, multimap => by default sort the element and then insert them 
         // - Container adapters : stack, queue, priority_queue
     // -Algorithms : (Applied within containers)
         // - sort, find, copy, for_each
     // -Iterators :
     // -Functors(function objects) :used with algorithms to customize their behavior
     // Array : contiguous memory storage => fast access
+    // typename keyword : 
+    // serves two distinct purposes in templates: 
+    // * In Template Parameter Declarations: To declare a template type parameter.
+    // * Inside Template Definitions: To disambiguate dependent types.
 
 #include <algorithm>
 #include <vector>
 #include <cassert>
 #include <iostream>
 #include <csignal>
+#include <stack>
 
 // int devide(int i, int b){
 //     assert(b != 0 && "division by 0");
@@ -42,4 +47,10 @@ int main(){
     for (b; b != c.end(); b++){
         std::cout << *b << '\n';
     }
+    std::stack<int> a;
+    a.push(9);
+    a.push(9);
+    a.push(10);
+    a.push(9);
+    a.push(9);
 }

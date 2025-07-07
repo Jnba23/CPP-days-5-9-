@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 13:39:15 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/03 13:09:01 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/07 20:09:24 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Span::Span(): capacity(10){
 }
 
-Span::Span(unsigned int N): capacity(N){
+Span::Span(unsigned int n): capacity(n){
 }
 
 Span::Span(const Span& sc): capacity(sc.getCapacity()), v(sc.v){
@@ -43,29 +43,43 @@ const char* OutOfRange::what() const throw(){
     return ("Container full !");
 }
 
+const char* ExceedRange::what() const throw(){
+    return ("Max capacity will be exceeded !");
+}
+
 const char* OneElemContainer::what() const throw(){
     return ("Empty or Container have one element !");
 }
 
 unsigned int Span::shortestSpan(){
     unsigned int s = UINT_MAX;
-    if (v.size() <= 1)
+    std::vector<unsigned int> tmp;
+    if (v.size() == 1 || v.empty())
         throw(OneElemContainer());
-    std::sort(v.begin(), v.end());
-    for (std::vector<int>::const_iterator i = v.begin() + 1; i != v.end(); i++){
-        if (s >= static_cast<unsigned int>(((*i - *(i - 1)))))
-            s = static_cast<unsigned int>(((*i - *(i - 1))));
+    std::vector<int> sorted = v;
+    std::sort(sorted.begin(), sorted.end());
+    for (std::vector<int>::const_iterator i = sorted.begin(); i != sorted.end() - 1; i++){
+        unsigned int diff = static_cast<unsigned int> (*(i + 1) - *i);
+        if (s > diff)
+            s = diff;
     }
     return (s);
 }
 
 unsigned int Span::longestSpan(){
-    if (v.size() <= 1)
-    throw(OneElemContainer());
+    if (v.size() == 1 || v.empty())
+        throw(OneElemContainer());
     std::vector<int>::iterator b = v.begin();
     std::vector<int>::iterator e = v.end();
     unsigned int s = *(std::max_element(b, e)) - *(std::min_element(b, e));
     return (s);
+}
+
+void Span::expandVec(const std::vector<int>& e){
+    unsigned int i = std::distance(e.begin(), e.end());
+    if (v.size() + i > capacity)
+        throw (ExceedRange());
+    v.insert(v.end(), e.begin(), e.end());
 }
 
 Span::~Span(){};

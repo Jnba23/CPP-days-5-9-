@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 13:33:12 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/05 22:42:56 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/07 12:11:57 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SPAN_HPP
 
 #include <iostream>
+#include <iterator>
 #include <vector>
 #include <list>
 #include <deque>
@@ -34,7 +35,7 @@ class Span {
         void addNumber(int n);
         unsigned int shortestSpan();
         unsigned int longestSpan();
-        void expandRange(const std::vector<int>& v);
+        void expandVec(const std::vector<int>& v);
         ~Span();
         
 };
@@ -43,6 +44,12 @@ class OutOfRange : public std::exception{
     public:
         const char* what() const throw();
 };
+
+class ExceedRange : public std::exception{
+    public:
+        const char* what() const throw();
+};
+
 class OneElemContainer : public std::exception{
     public:
         const char* what() const throw();
