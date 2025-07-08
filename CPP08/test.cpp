@@ -3,7 +3,7 @@
     // -Containers : 
         // - sequence containers : vectors, list, deque -> store them in the same order they were inserted
         // - associative containers : set, map, multiset, multimap => by default sort the element and then insert them 
-        // - Container adapters : stack, queue, priority_queue
+        // - Container adaptors : stack, queue, priority_queue
     // -Algorithms : (Applied within containers)
         // - sort, find, copy, for_each
     // -Iterators :
