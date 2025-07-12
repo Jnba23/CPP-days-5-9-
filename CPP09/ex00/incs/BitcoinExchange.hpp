@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:32:01 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/10 19:34:31 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/12 12:21:54 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <stdexcept>
 #include <fstream>
 #include <sstream>
+#include <climits>
 
 class BitcoinEx {
     private:
@@ -29,14 +30,19 @@ class BitcoinEx {
         BitcoinEx(const BitcoinEx& b);
         BitcoinEx& operator=(const BitcoinEx& b);
         void fillData();
-        std::pair<int, float> fetchData() const;
+        float fetchData(const int d) const;
         ~BitcoinEx();
 };
 
-void search(const BitcoinEx& db, std::fstream& in);
-void checkErrors(const std::string& date, const std::string& value);
-
-class InputError : public std::exception{
+struct DateCmpnt{
+    std::string Date;
+    std::string year;
+    std::string month;
+    std::string day;
 };
+
+void search(const BitcoinEx& db, std::fstream& in);
+void searchDb(const BitcoinEx& db, std::string date, std::string value);
+void checkErrors(const std::string& date, const std::string& value);
 
 #endif
