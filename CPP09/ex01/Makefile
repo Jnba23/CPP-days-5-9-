@@ -1,12 +1,12 @@
 CC = c++
 FLAGS = -Wall -Werror -Wextra -Iincs -std=c++98 -MMD -g3
-SRC = main.cpp BitcoinExchange.cpp
-HEADER = BitcoinExchange.hpp
+SRC = main.cpp RPN.cpp
+HEADER = RPN.hpp
 OBJDIR = obj
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:%.cpp=%.o))
 DEPSDIR = deps
 DEPS = $(addprefix $(DEPSDIR)/, $(SRC:%.cpp=%.d))
-EXEC = Btc
+EXEC = RPN
 
 all: $(EXEC)
 # @if [ -f $(EXEC) ]; then ./$(EXEC); else echo "Error $(EXEC) not found"; exit 1; fi

@@ -1,17 +1,17 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <list>
 
 int main(){
-    std::string a = "   10   ";
-    std::istringstream i(a);
-    int b;
-    i >> b;
-    // if (!i.eof())
-    //     std::cout << "Failed !" << '\n';
-        // std::cout << "failed to read a number !" << '\n';
-    std::cout << b << '\n';
-    // while (std::getline(i, a, '-')){
-    //     std::cout << a << '\n';
-    // }
+    std::list<std::string> s;
+    s.push_back("a");
+    s.push_back("b");
+    s.push_back("c");
+    s.push_back("d");
+    s.push_back("e");
+    std::cout << s.front() << '\n';
+    for (std::list<std::string>::iterator it = s.begin(); it != s.end(); it++){
+        std::cout << (*it)[0] << '\n';
+    }
 }
