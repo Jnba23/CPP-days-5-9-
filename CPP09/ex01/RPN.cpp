@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:46:57 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/13 21:34:26 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/13 21:47:57 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void RPN::partialRes(std::string& op){
     res.pop();
     r1 = res.top();
     if (op == "+")
-        r += r1 + r2;
+        r = r1 + r2;
     else if (op == "-")
-        r -= r1 - r2;
+        r = r1 - r2;
     else if (op == "*")
-        r *= r1 * r2;
+        r = r1 * r2;
     else if (op == "/"){
         if (r2 == 0)
             throw(std::runtime_error("Division by 0 !"));
@@ -75,24 +75,15 @@ void RPN::partialRes(std::string& op){
 
 double RPN::calculate(){
     std::string ops = "+-*/";
-    size_t i = 0;
-    std::list<std::string>::iterator it = s.begin();
-    
-    for (; it != s.end(); it++){
-        if (i == 0 && s.front().find_first_of(ops) != s.front().npos)
-            throw(std::runtime_error("invalid input"));
+    for (std::list<std::string>::iterator it = s.begin(); it != s.end(); it++){
         if (it->find_first_of(ops) == it->npos){
             res.push(std::strtod(it->c_str(), NULL));
-            i++;
         } else if (it->find_first_of(ops) != it->npos){
             if (res.size() < 2)
                 throw(std::runtime_error("Not enough operands !"));
             partialRes(*it);
         }
-        i++;
     }
-    if (res.size() != 1)
-        throw(std::runtime_error("invalid input"));
     return(res.top());
 }
 
