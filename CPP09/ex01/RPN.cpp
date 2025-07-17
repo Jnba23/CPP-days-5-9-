@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:46:57 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/13 21:47:57 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/14 11:47:09 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void RPN::fillInput(const std::string& str){
 }
 
 void RPN::partialRes(std::string& op){
-    double r1, r2;
+    double r, r1, r2;
     r2 = res.top();
     res.pop();
     r1 = res.top();

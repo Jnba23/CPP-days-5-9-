@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:15:19 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/13 21:56:13 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/14 11:46:54 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class RPN{
     private:
         std::list<std::string> s;
         std::stack<double> res;
-        double r;
     public:
         RPN();
         RPN(const RPN& r);
