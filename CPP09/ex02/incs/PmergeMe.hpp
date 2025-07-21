@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 21:58:51 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/21 22:31:08 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/21 22:53:09 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class PmergeMe{
 	public:
 		T container;
 		PmergeMe();
-		PmergeMe(const T& container);
+		PmergeMe(const PmergeMe& container);
 		PmergeMe& operator=(const PmergeMe& p);
 		~PmergeMe();
 	};
