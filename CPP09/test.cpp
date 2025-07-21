@@ -1,17 +1,23 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <list>
+#include <iostream>   // For std::cout
+#include <typeinfo>   // For typeid
+#include <string>     // For std::string
+#include <vector>     // For std::vector
+#include <deque>      // For std::deque
+
+// A templated function to detect the type of the passed parameter
+template <typename T>
+void processCont(T& container, int a){
+    container.push_back(a);
+}
+
 
 int main(){
-    std::list<std::string> s;
-    s.push_back("a");
-    s.push_back("b");
-    s.push_back("c");
-    s.push_back("d");
-    s.push_back("e");
-    std::cout << s.front() << '\n';
-    for (std::list<std::string>::iterator it = s.begin(); it != s.end(); it++){
-        std::cout << (*it)[0] << '\n';
+    std::vector<int> a;
+
+    processCont(a, 40);
+    processCont(a, 570);
+    processCont(a, 0);
+    for(std::vector<int>::iterator it = a.begin(); it != a.end(); it++){
+        std::cout << *it << std::endl;
     }
 }
