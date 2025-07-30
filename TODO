@@ -1,0 +1,21 @@
+➜  ex01 git:(main) ✗ ./RPN "2 2"
+2
+/RPN "2 2 2 2 2 2 2 2 2 2 2 2 2 "
+➜  ex01 git:(main) ✗ ./RPN ""   
+[1]    14512 segmentation fault  ./RPN ""
+➜  ex01 git:(main) ✗ 
+------------------------------------
+➜  ex02 git:(main) ✗ ./PmergeMe 2147483648
+Before : 
+After :  
+Time to process a range of 0 elements with std::vector : 27.00000 us
+Time to process a range of 0 elements with std::deq    : 11.00000 us
+➜  ex02 git:(main) ✗ 
+----------------------------------
+➜  ex02 git:(main) ✗ ./PmergeMe ""
+Before : 
+After :  
+Time to process a range of 0 elements with std::vector : 12.00000 us
+Time to process a range of 0 elements with std::deq    : 10.00000 us
+➜  ex02 git:(main) ✗ 
+-----------------------------------
