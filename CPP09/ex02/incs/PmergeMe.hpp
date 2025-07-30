@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 21:58:51 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/16 10:42:57 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/30 09:16:07 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,45 @@
 #define PMERGE_ME
 
 #include<iostream>
-#include<vector>
+#include<iomanip>
+#include<deque>
 #include<set>
+#include<vector>
+#include<utility>
 #include<exception>
 #include<sstream>
+#include<algorithm>
+#include <sys/time.h>
+#include <ctime>
 
-class PmergeMe {
-    private:
-    public:
-        std::vector<int> mainInit;
-        PmergeMe();
-        PmergeMe(const PmergeMe& p);
-        PmergeMe& operator=(const PmergeMe& p);
-        void parseInput(int ac, char**av);
-        void FillVecs(int ac, char **av);
-        ~PmergeMe();
-        std::vector<int> sort(std::vector<int>& v);
-        void Insert(std::vector<int>& m, std::vector<int>& p);
-};
-
-
+class PmergeMe{
+	public:
+		std::vector<int> vec;
+		std::deque<int> deq;
+		double pars_time;
+		double vec_time;
+		double deq_time;
+		PmergeMe();
+		PmergeMe(const PmergeMe& p);
+		PmergeMe& operator=(const PmergeMe& p);
+		~PmergeMe();
+		void parsNdFill(int ac, char** av);
+	};
+	void sortVec(std::vector<int>& container);
+	void sortMainPairs(std::vector<std::pair<int, int> >& v);
+	void merge(std::vector<std::pair<int, int> >& lv, std::vector<std::pair<int, int> >& rv,
+		std::vector<std::pair<int, int> >& v);
+	void insertion(std::vector<int>& v, std::vector<std::pair<int, int> >& sortedPairs, std::vector<int>& rest);
+	void sortDeq(std::deque<int>& container);
+	void sortMainPairsD(std::deque<std::pair<int, int> >& v);
+	void mergeD(std::deque<std::pair<int, int> >& lv, std::deque<std::pair<int, int> >& rv,
+		std::deque<std::pair<int, int> >& v);
+	void insertionD(std::deque<int>& v, std::deque<std::pair<int, int> >& sortedPairs, std::deque<int>& rest);
+	template <typename T>
+	void print(T& cont){
+		for(typename T::iterator it = cont.begin(); it != cont.end(); it++)
+				std::cout << *it << ' ';
+		std::cout << '\n';
+	}
+	void printTime(const PmergeMe& p);
 #endif
