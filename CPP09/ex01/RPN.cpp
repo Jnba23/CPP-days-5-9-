@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:46:57 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/14 11:47:09 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/30 17:22:29 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,21 @@ void RPN::partialRes(std::string& op){
 
 double RPN::calculate(){
     std::string ops = "+-*/";
+    int counter = 0;
     for (std::list<std::string>::iterator it = s.begin(); it != s.end(); it++){
         if (it->find_first_of(ops) == it->npos){
             res.push(std::strtod(it->c_str(), NULL));
         } else if (it->find_first_of(ops) != it->npos){
+            counter++;
             if (res.size() < 2)
                 throw(std::runtime_error("Not enough operands !"));
             partialRes(*it);
         }
     }
+    if (res.empty() || !counter)
+        throw(std::runtime_error("Empty args or No ops !"));
+    if (res.size() > 1)
+        throw(std::runtime_error("Not enough ops !"));
     return(res.top());
 }
 

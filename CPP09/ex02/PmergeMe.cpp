@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 22:02:46 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/30 09:17:22 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/30 17:54:22 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,15 @@ PmergeMe::~PmergeMe(){
 void PmergeMe::parsNdFill(int ac, char **av){
 	std::istringstream in;
 	std::vector<int> vecCpy;
-	int a;
+	long a;
 	for (int i = 1; i < ac; i++){
 		in.clear();
 		in.str(av[i]);
-		while (in >> a){
-			if (a < 0)
-				throw (std::runtime_error("Invalid input !"));
-			vec.push_back(a);
-			deq.push_back(a);
-		}
-		if (in.fail() && !in.eof())
+		in >> a;
+		if (!in || !in.eof() || a < 0 || a > INT_MAX)
 			throw (std::runtime_error("Invalid input !"));
+		vec.push_back(a);
+		deq.push_back(a);
 	}
 	vecCpy = vec;
 	std::sort(vecCpy.begin(), vecCpy.end());
@@ -252,11 +249,11 @@ void insertionD(std::deque<int>& main, std::deque<std::pair<int, int> >& sortedP
 }
 
 void printTime(const PmergeMe& p){
-	std::cout << "Pars " << std::fixed << std::setprecision(4) << p.pars_time << '\n';
-	std::cout << "Vec time " << std::fixed << std::setprecision(4) << p.vec_time << '\n';
-	std::cout << "Deq time " << std::fixed << std::setprecision(4) << p.deq_time << '\n';
+	// std::cout << "Pars " << std::fixed << std::setprecision(4) << p.pars_time << '\n';
+	// std::cout << "Vec time " << std::fixed << std::setprecision(4) << p.vec_time << '\n';
+	// std::cout << "Deq time " << std::fixed << std::setprecision(4) << p.deq_time << '\n';
 	std::cout << "Time to process a range of " << p.vec.size() << " elements with std::vector : " 
-		<< std::fixed << std::setprecision(5) << p.pars_time + p.vec_time << " us" << '\n';
+		<< std::fixed << std::setprecision(5) << /*p.pars_time + */p.vec_time << " us" << '\n';
 	std::cout << "Time to process a range of " << p.deq.size() << " elements with std::deq    : " 
-		<< std::fixed << std::setprecision(5) << p.pars_time + p.deq_time << " us" << '\n';
+		<< std::fixed << std::setprecision(5) << /*p.pars_time + */p.deq_time << " us" << '\n';
 }

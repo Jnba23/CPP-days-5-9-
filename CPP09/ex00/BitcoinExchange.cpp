@@ -6,7 +6,7 @@
 /*   By: asayad <asayad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:36:15 by asayad            #+#    #+#             */
-/*   Updated: 2025/07/12 15:58:15 by asayad           ###   ########.fr       */
+/*   Updated: 2025/07/30 14:07:26 by asayad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void BitcoinEx::fillData(){ //give wrong value when filling data
     }
     std::string input;
     std::getline(in, input);
+    if (input != "date,exchange_rate")
+        throw(std::runtime_error("Invalid DataBase !"));
     while (std::getline(in, input)){
         std::string date = input.substr(0, 10);
         for (size_t i = 0; i < date.size(); i++){
@@ -60,7 +62,7 @@ void checkErrors(const std::string& date, const std::string& value){
     int counter = 0;
     while (std::getline(i, cpnts.Date, '-')){
         if (counter > 2)
-            throw (std::runtime_error("Error Date => " + date));
+            throw (std::runtime_error("Date => " + date));
         if (counter == 0){
             cpnts.year = cpnts.Date;
             int year;
@@ -68,45 +70,48 @@ void checkErrors(const std::string& date, const std::string& value){
             y.clear();
             y.str(cpnts.year);
             y >> year;
-            if (!y.eof() || year > 9999 || year < 0)
-                throw(std::runtime_error("Error Year => " + date));
+            if (!y || !y.eof() || year > 9999 || year <= 0)
+                throw(std::runtime_error("Year => " + date));
         }
         if (counter == 1){
             cpnts.month = cpnts.Date;
             if (cpnts.month.size() != 2)
-                throw(std::runtime_error("Error Month => " + date));
+                throw(std::runtime_error("Month => " + date));
             int month;
             std::istringstream m;
             m.clear();
             m.str(cpnts.month);
             m >> month;
-            if (!m.eof() || month > 12 || month < 1)
-                throw(std::runtime_error("Error Month => " + date));
+            if (!m || !m.eof() || month > 12 || month < 1)
+                throw(std::runtime_error("Month => " + date));
         }
         if (counter == 2){
             cpnts.day = cpnts.Date;
+            if (cpnts.day.size() != 3)
+                throw(std::runtime_error("day => " + date));
             int day;
             std::istringstream d;
             d.clear();
             d.str(cpnts.day);
             d >> day;
+            if (!d)
+                throw(std::runtime_error("Day => " + date));
             if (d.get() != ' ')
             {
                 std::cout << day << '\n';
-                throw(std::runtime_error("Error Day => " + date));}
+                throw(std::runtime_error("Day => " + date));
+            }
             if (cpnts.month == "02"){
+                if (day > 29 || day < 1)
+                    throw(std::runtime_error("February days : 1 - 29 => " + date));
                 int i = std::strtol(cpnts.year.c_str(), NULL, 10);
                 if ((i % 400 == 0) || (i % 4 == 0 && i % 100 != 0)){
-                    if (day > 29 || day < 1)
-                        throw(std::runtime_error("Error: Leap year February days : 1 - 29 => " + date));
-                    else{
-                        if (day > 28 || day < 1)
-                            throw(std::runtime_error("Error: Non-Leap year February days : 1 - 28 => " + date));
-                    }
+                    if (day > 28 || day < 1)
+                        throw(std::runtime_error("Non-Leap year February days : 1 - 28 => " + date));
                 } 
             } else {
                 if (day > 31 || day < 1){
-                    throw(std::runtime_error("Error Day : 1 - 31 => " + date));
+                    throw(std::runtime_error("Day : 1 - 31 => " + date));
                 }
             }
         }
@@ -117,12 +122,14 @@ void checkErrors(const std::string& date, const std::string& value){
     v.str(value);
     float  val;
     v >> val;
+    if (!v)
+        throw(std::runtime_error("Invalid input !"));
     if (!v.eof())
-        throw(std::runtime_error("Error: non-number or trailing whitespace !"));
+        throw(std::runtime_error("non-number or trailing whitespace !"));
     if (val < 0)
-        throw(std::runtime_error("Error: not a positive value !"));
+        throw(std::runtime_error("not a positive value !"));
     if (val > 1000)
-        throw(std::runtime_error("Error: too large a value !"));
+        throw(std::runtime_error("too large a value !"));
 }
 
 float BitcoinEx::fetchData(const int d) const{
@@ -164,13 +171,20 @@ void search(const BitcoinEx& db, std::fstream& in){
             break ;
         i.clear();
         i.str(input);
-        std::getline(i, date, '|');
+        try{
+            std::getline(i, date, '|');
+            if (i.eof())
+                throw(std::runtime_error("Invalid input !"));
+        }catch(const std::exception& e){
+            std::cout << "Error : " << e.what() << '\n';
+            continue;
+        } 
         std::getline(i, value, '|');
         try {
             checkErrors(date, value);
             searchDb(db, date, value);
         } catch (const std::exception& e){
-            std::cout << e.what() << '\n';
+            std::cout << "Error : " << e.what() << '\n';
             continue ;
         }
     }
